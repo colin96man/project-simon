@@ -40,9 +40,13 @@
 //create a function that will randomly select triangles using Math
 
 //create function for the asynchronus timing of how long a traingle will be "lit up"
+    //each triangle's style will change and then return to normal in the sma eamount of time
 
 //create functions for the differnet rounds:
-    //each round will increment up by one on how many times we choose a random triangle 
+    //each round will increment up by one on how many times simon chooses a random triangle 
     //render
 
-//creat function for the player click event 
+//creat function for the player click event:
+    //clicking one of the triangles will change the style just like when a random triangle is selected
+    //clicked element will call the timing function to show it light up for the time alotted
+    //render
