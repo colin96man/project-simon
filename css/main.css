@@ -1,3 +1,57 @@
 /* Viking styles! vivking esq background, maybe some viking related pics in the triangles
 red, blue, grn & ylw triangles
 grid box with all triangles inside */
+
+body {
+    font-family: 'Aclonica', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    font-family: 'Aclonica', sans-serif;
+}
+
+#board {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+#arrow-down, #arrow-left, #arrow-right, #arrow-up {
+    position: absolute;
+    width: calc(100% / 1.414);
+    height: calc(100% /1.414);
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 0%;
+}
+
+#arrow-down {
+    transform: rotate(-135deg);
+    background-color: red;
+}
+
+#arrow-left {
+    transform: rotate(135deg);
+    background-color: blue;
+}
+
+#arrow-right {
+    transform: rotate(-45deg);
+    background-color: green;
+}
+
+#arrow-up {
+    transform: rotate(45deg);
+    background-color: yellow;
+}
+
+/* .board > div:hover {
+    background-color: red;
+} */
