@@ -141,7 +141,4 @@ function compPickThree() {
 function compPickFour() {
     triangleEl.bottom.style.backgroundColor = triangles[3].light;
     timing();
-    if('click') {
-        playersPattern.push(4);
-    }
 }
