@@ -55,7 +55,13 @@ function gameStart() {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
     console.log(simonsPattern);
-    
+    roundNum = 1;
+    simonsPattern.forEach(function() {
+        if(simonsPattern[0] === 1) compPickOne();
+        if(simonsPattern[0] === 2) compPickTwo();
+        if(simonsPattern[0] === 3) compPickThree();
+        if(simonsPattern[0] === 4) compPickFour();
+    });
 }
 
 //Render:
@@ -82,7 +88,7 @@ function timing() {
         if(triangleEl.bottom) {
             triangleEl.bottom.style.backgroundColor = triangles[3].color;
         }
-    }, 250);
+    }, 300);
 }
 
 function playerClickRed() {
