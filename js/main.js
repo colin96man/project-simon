@@ -1,11 +1,11 @@
-const triangles = {
-    top: 'pink',
-    left: 'cyan', 
-    right: 'lime',
-    bottom: 'lightyellow'
-};
+const triangles = [
+    {color: 'darkred', light: 'red', time: 1000},
+    {color: 'blue', light: 'cyan', time: 1000}, 
+    {color: 'green', light: 'lime', time: 1000},
+    {color: 'gold', light: 'yellow', time: 1000}
+];
 
-const board = [1, 2, 3, 4];
+
 
 const triangleEl = {
     top: document.querySelector('#arrow-down'),
@@ -23,12 +23,12 @@ const triangleEl = {
 let gameOver;
 let winner;
 let roundNum;
-let simonsPattern;
-let playersPattern;
+let simonsPattern = [];
+let playersPattern = [];
 
 document.getElementById('reset-btn').addEventListener('click', init);
 
-document.getElementById('start-btn').addEventListener('click', round);
+document.getElementById('start-btn').addEventListener('click', gameStart);
 
 document.getElementById('arrow-down').addEventListener('click', playerClickRed);
 
@@ -38,94 +38,104 @@ document.getElementById('arrow-right').addEventListener('click', playerClickGrn)
 
 document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
 
-
-//Initialize:
-    //board
-    //simonsPattern array is an empty array
-    //playersPattern array is an empty array
-    //the round will be reset to round 0
-    //game over logic (null)
-    //win logic (null)
-    //render
-init()
+init();
 
 function init() {
-    //console.log('click');
-    let simonsPattern = [];
-    let playersPattern = [];
-    let winner = null;
-    let gameOver = null;
-    let roundNum = 0;
-    //render()
+    simonsPattern = [];
+    playersPattern = [];
+    winner = null;
+    gameOver = null;
+    roundNum = 0;
+    //check()
+}
+
+function gameStart() {
+    console.log('start button is working');
+    for(let i = 0; i < 10; i ++) {
+    simonsPattern.push(Math.floor(Math.random() * 4) + 1);
+    };
+    console.log(simonsPattern);
+    
 }
 
 //Render:
-    //call renderBoard
+//call renderBoard
     //check for game over
     //if game over display game over and correct amount of button pushes
     //after round 10 check for win
 
-function render () {
+function check () {
 
 }
 
-function randomPick(triangles) {
-    let trianglesKeys = Object.keys(triangles);
-    return triangles[trianglesKeys[trianglesKeys.length * Math.random() << 0]];
-    // simonsPattern.push(randomTri);
+function timing() {
+    setTimeout(function(target) {
+        if(triangleEl.top) {
+            triangleEl.top.style.backgroundColor = triangles[0].color;
+        }
+        if(triangleEl.left) {
+            triangleEl.left.style.backgroundColor = triangles[1].color;
+        }
+        if(triangleEl.right) {
+            triangleEl.right.style.backgroundColor = triangles[2].color;
+        }
+        if(triangleEl.bottom) {
+            triangleEl.bottom.style.backgroundColor = triangles[3].color;
+        }
+    }, 250);
 }
 
-//create function for the asynchronus timing of how long a triangle will be "lit up"
-    //each triangle's style will change and then return to normal in the same amount of time
-
-function timing(key) {
-    setTimeout(function() {
-        triangleEl.key.style.backgroundColor = triangles.key;
-    }, 2000);
-}
-
-//create functions for the different rounds:
-    //each round will increment up by one on how many times simon chooses a random triangle 
-    //render
-
-function round() {
-    console.log('start button is working');
-    console.log(randomPick(triangles));
-    randomPick(triangles);
-}
-
-//create function for the player click event:
-    //clicking one of the triangles will change the style just like when a random triangle is selected
-    //clicked element will call the timing function to show it light up for the time alotted
-    //render
-
-function playerClick() {
-    playerClickRed()
-    playerClickBlue()
-    playerClickGrn()
-    playerClickYlw()
-    //render()
-}
-
-function playerClickRed(top) {
-    console.log('top clicked');
-    triangleEl.top.style.backgroundColor = triangles.top;
+function playerClickRed() {
+    triangleEl.top.style.backgroundColor = triangles[0].light;
     timing();
+    if('click') {
+        playersPattern.push(1);
+    }
 }
 
 function playerClickBlue() {
-    console.log('clicked left');
-    triangleEl.left.style.backgroundColor = triangles.left;
+    triangleEl.left.style.backgroundColor = triangles[1].light;
+    timing();
+    if('click') {
+        playersPattern.push(2);
+    }
 }
 
 function playerClickGrn() {
-    console.log('clicked right');
-    triangleEl.right.style.backgroundColor = triangles.right;
-
+    triangleEl.right.style.backgroundColor = triangles[2].light;
+    timing();
+    if('click') {
+        playersPattern.push(3);
+    }
 }
 
 function playerClickYlw() {
-    console.log('clicked bottom');
-    triangleEl.bottom.style.backgroundColor = triangles.bottom;
+    triangleEl.bottom.style.backgroundColor = triangles[3].light;
+    timing();
+    if('click') {
+        playersPattern.push(4);
+    }
+}
 
+function compPickOne() {
+    triangleEl.top.style.backgroundColor = triangles[0].light;
+    timing();
+}
+
+function compPickTwo() {
+    triangleEl.left.style.backgroundColor = triangles[1].light;
+    timing();
+}
+
+function compPickThree() {
+    triangleEl.right.style.backgroundColor = triangles[2].light;
+    timing();
+}
+
+function compPickFour() {
+    triangleEl.bottom.style.backgroundColor = triangles[3].light;
+    timing();
+    if('click') {
+        playersPattern.push(4);
+    }
 }

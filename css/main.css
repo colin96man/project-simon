@@ -31,11 +31,12 @@ button {
     top: 50%;
     left: 50%;
     transform-origin: 0% 0%;
+    border: 1px solid black;
 }
 
 #arrow-down {
     transform: rotate(-135deg);
-    background-color: red;
+    background-color: darkred;
 }
 
 #arrow-left {
