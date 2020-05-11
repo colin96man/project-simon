@@ -1,5 +1,5 @@
 const triangles = {
-    top: 'tomato',
+    top: 'pink',
     left: 'cyan', 
     right: 'lime',
     bottom: 'lightyellow'
@@ -15,7 +15,7 @@ const triangleEl = {
 };
 
 //State variable:    
-    //game over prompt with how many correct button pushes the player had
+    //game over prompt with how many rounds the player survived
     //round number
     //simonsPattern is an array that will hold which buttons that are selected at random that the layer needs to copy
     //playersPattern is an array that will hold which buttons the player chooses
@@ -72,14 +72,15 @@ function render () {
 function randomPick(triangles) {
     let trianglesKeys = Object.keys(triangles);
     return triangles[trianglesKeys[trianglesKeys.length * Math.random() << 0]];
+    // simonsPattern.push(randomTri);
 }
 
 //create function for the asynchronus timing of how long a triangle will be "lit up"
     //each triangle's style will change and then return to normal in the same amount of time
 
-function timing(triangle) {
+function timing(key) {
     setTimeout(function() {
-        triangleEl.style.backgroundColor = triangles[triangle];
+        triangleEl.key.style.backgroundColor = triangles.key;
     }, 2000);
 }
 
@@ -89,6 +90,8 @@ function timing(triangle) {
 
 function round() {
     console.log('start button is working');
+    console.log(randomPick(triangles));
+    randomPick(triangles);
 }
 
 //create function for the player click event:
@@ -106,17 +109,23 @@ function playerClick() {
 
 function playerClickRed(top) {
     console.log('top clicked');
+    triangleEl.top.style.backgroundColor = triangles.top;
     timing();
 }
 
 function playerClickBlue() {
     console.log('clicked left');
+    triangleEl.left.style.backgroundColor = triangles.left;
 }
 
 function playerClickGrn() {
     console.log('clicked right');
+    triangleEl.right.style.backgroundColor = triangles.right;
+
 }
 
 function playerClickYlw() {
     console.log('clicked bottom');
+    triangleEl.bottom.style.backgroundColor = triangles.bottom;
+
 }
