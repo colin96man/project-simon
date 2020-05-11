@@ -13,6 +13,7 @@ body {
 
 button {
     font-family: 'Aclonica', sans-serif;
+    margin-top: 5px;
 }
 
 #board {
@@ -51,7 +52,3 @@ button {
     transform: rotate(45deg);
     background-color: yellow;
 }
-
-/* .board > div:hover {
-    background-color: red;
-} */
