@@ -1,8 +1,8 @@
 const triangles = [
-    {color: 'darkred', light: 'red', time: 1000},
-    {color: 'blue', light: 'cyan', time: 1000}, 
-    {color: 'green', light: 'lime', time: 1000},
-    {color: 'gold', light: 'yellow', time: 1000}
+    {color: 'darkred', light: 'red'},
+    {color: 'blue', light: 'cyan'}, 
+    {color: 'green', light: 'lime'},
+    {color: 'gold', light: 'yellow'}
 ];
 
 
@@ -13,12 +13,6 @@ const triangleEl = {
     right: document.querySelector('#arrow-right'),
     bottom: document.querySelector('#arrow-up')
 };
-
-//State variable:    
-    //game over prompt with how many rounds the player survived
-    //round number
-    //simonsPattern is an array that will hold which buttons that are selected at random that the layer needs to copy
-    //playersPattern is an array that will hold which buttons the player chooses
 
 let gameOver;
 let winner;
@@ -31,11 +25,8 @@ document.getElementById('reset-btn').addEventListener('click', init);
 document.getElementById('start-btn').addEventListener('click', gameStart);
 
 document.getElementById('arrow-down').addEventListener('click', playerClickRed);
-
 document.getElementById('arrow-left').addEventListener('click', playerClickBlue);
-
 document.getElementById('arrow-right').addEventListener('click', playerClickGrn);
-
 document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
 
 init();
@@ -43,35 +34,62 @@ init();
 function init() {
     simonsPattern = [];
     playersPattern = [];
-    winner = null;
-    gameOver = null;
+    winner = false;
+    gameOver = false;
     roundNum = 0;
     //check()
 }
 
 function gameStart() {
-    console.log('start button is working');
+    //console.log('start button is working');
     for(let i = 0; i < 10; i ++) {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
-    console.log(simonsPattern);
+    //console.log(simonsPattern);
     roundNum = 1;
-    simonsPattern.forEach(function() {
-        if(simonsPattern[0] === 1) compPickOne();
-        if(simonsPattern[0] === 2) compPickTwo();
-        if(simonsPattern[0] === 3) compPickThree();
-        if(simonsPattern[0] === 4) compPickFour();
-    });
+    playersPattern = [];
+    compTurn();
 }
 
-//Render:
-//call renderBoard
-    //check for game over
-    //if game over display game over and correct amount of button pushes
-    //after round 10 check for win
+function compTurn() {
+    //How to disable event listeners for player
+    let loop = 1;
+    const playCompPattern = setInterval(function() {
+        console.log(loop);
+        if(simonsPattern[loop - 1] === 1) compPickOne();
+        if(simonsPattern[loop - 1] === 2) compPickTwo();
+        if(simonsPattern[loop - 1] === 3) compPickThree();
+        if(simonsPattern[loop - 1] === 4) compPickFour();
+        if(loop === roundNum) {
+            clearInterval(playCompPattern)
+            playersPattern = [];
+        }
+        loop++;
+    }, 800) 
+}
 
 function check () {
+    //compare playersPattern and simonsPattern
+    //every click compare to simonsPattern 
+    for(let i = plqyersPattern[0] && simonsPattern[0]; 1 < playersPattern.length; i++) {
+        if(simonsPattern[i] === playersPattern[i] && playersPattern.length === simonsPattern.length) {
+            return win();
+        } else if(simonsPattern[i] === playersPattern[i] && playersPattern.length !== simonsPattern.length) {
+            roundNum++;
+            compTurn();
+        }
+    }
+    
+}
 
+function win() {
+    winner = true;
+    if(winner = true) document.getElementById('win-or-lose').innerHTML = 'GLORIOUS WIN!!! press reset and then start to play again';
+}
+
+function lose() {
+    gameOver = true;
+    if(gameOver = true) document.getElementById('win-or-lose').innerHTML = 'Game Over, Odin takes you to the afterlife. press reset and then start to try again'
 }
 
 function timing() {
