@@ -40,7 +40,7 @@ function gameStart() {
     for(let i = 0; i < 10; i ++) {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
-    //console.log(simonsPattern);
+    console.log(simonsPattern);
     roundNum = 1;
     playersPattern = [];
     compTurn();
@@ -66,28 +66,47 @@ function compTurn() {
 function check () {
     //compare playersPattern and simonsPattern
     //every click compare to simonsPattern
-
-    for(let i = 0; i < playersPattern.length; i++) {
-        if(playersPattern[i] === simonsPattern[i] && playersPattern.length === simonsPattern.length) {
-            return console.log('You Win')
-        } 
-        if(playersPattern[i] !== simonsPattern[i]) {
-            return console.log('Game Over')
-        } else {
-            roundNum++;
-            compTurn();
-            console.log('next round')
-        }
+    console.log('check function start');
+    console.log(playersPattern);
+    let playerVar = playersPattern.join('')
+    let simonVar = simonsPattern.slice(0, roundNum).join('')
+    if(playerVar === simonVar && roundNum < 10) {
+        roundNum++
+        compTurn();
     }
+    //for(let i = 0; i < playersPattern.length; i++) {
+     //if(playersPattern[i] === simonsPattern[i]) {
+            
+    //         roundNum++;
+    //         compTurn();
+    //     }
+    if(playerVar === simonVar && roundNum === 10) {
+         return console.log('You Win');
+    } 
+    if(playerVar !== simonVar) {
+        return console.log('Game Over');
+    }
+    // }
+}
+
+function checkRound() {
+    console.log(playersPattern, roundNum);
+    if(playersPattern.length === roundNum) {
+        check();
+        console.log('check');
+        return;
+    }
+    console.log('not yet');
+    return;
 }
 
 function playersTurn() {
+    playersPattern = [];
     document.getElementById('arrow-down').addEventListener('click', playerClickRed);
     document.getElementById('arrow-left').addEventListener('click', playerClickBlue);
     document.getElementById('arrow-right').addEventListener('click', playerClickGrn);
     document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
-    playersPattern = [];
-    check();
+    //check();
 }
 
 function timing() {
@@ -112,7 +131,7 @@ function playerClickRed() {
     timing();
     if('click') {
         playersPattern.push(1);
-        
+        checkRound();
     }
 }
 
@@ -121,7 +140,7 @@ function playerClickBlue() {
     timing();
     if('click') {
         playersPattern.push(2);
-        
+        checkRound();
     }
 }
 
@@ -130,7 +149,7 @@ function playerClickGrn() {
     timing();
     if('click') {
         playersPattern.push(3);
-        
+        checkRound();
     }
 }
 
@@ -139,7 +158,7 @@ function playerClickYlw() {
     timing();
     if('click') {
         playersPattern.push(4);
-        
+        checkRound();
     }
 }
 
