@@ -24,18 +24,13 @@ document.getElementById('reset-btn').addEventListener('click', init);
 
 document.getElementById('start-btn').addEventListener('click', gameStart);
 
-document.getElementById('arrow-down').addEventListener('click', playerClickRed);
-document.getElementById('arrow-left').addEventListener('click', playerClickBlue);
-document.getElementById('arrow-right').addEventListener('click', playerClickGrn);
-document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
-
 init();
 
 function init() {
     simonsPattern = [];
     playersPattern = [];
-    winner = false;
-    gameOver = false;
+    winner = null;
+    gameOver = null;
     roundNum = 0;
     //check()
 }
@@ -62,7 +57,7 @@ function compTurn() {
         if(simonsPattern[loop - 1] === 4) compPickFour();
         if(loop === roundNum) {
             clearInterval(playCompPattern)
-            playersPattern = [];
+            playersTurn();
         }
         loop++;
     }, 800) 
@@ -70,30 +65,33 @@ function compTurn() {
 
 function check () {
     //compare playersPattern and simonsPattern
-    //every click compare to simonsPattern 
-    for(let i = plqyersPattern[0] && simonsPattern[0]; 1 < playersPattern.length; i++) {
-        if(simonsPattern[i] === playersPattern[i] && playersPattern.length === simonsPattern.length) {
-            return win();
-        } else if(simonsPattern[i] === playersPattern[i] && playersPattern.length !== simonsPattern.length) {
+    //every click compare to simonsPattern
+
+    for(let i = 0; i < playersPattern.length; i++) {
+        if(playersPattern[i] === simonsPattern[i] && playersPattern.length === simonsPattern.length) {
+            return console.log('You Win')
+        } 
+        if(playersPattern[i] !== simonsPattern[i]) {
+            return console.log('Game Over')
+        } else {
             roundNum++;
             compTurn();
+            console.log('next round')
         }
     }
-    
 }
 
-function win() {
-    winner = true;
-    if(winner = true) document.getElementById('win-or-lose').innerHTML = 'GLORIOUS WIN!!! press reset and then start to play again';
-}
-
-function lose() {
-    gameOver = true;
-    if(gameOver = true) document.getElementById('win-or-lose').innerHTML = 'Game Over, Odin takes you to the afterlife. press reset and then start to try again'
+function playersTurn() {
+    document.getElementById('arrow-down').addEventListener('click', playerClickRed);
+    document.getElementById('arrow-left').addEventListener('click', playerClickBlue);
+    document.getElementById('arrow-right').addEventListener('click', playerClickGrn);
+    document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
+    playersPattern = [];
+    check();
 }
 
 function timing() {
-    setTimeout(function(target) {
+    setTimeout(function() {
         if(triangleEl.top) {
             triangleEl.top.style.backgroundColor = triangles[0].color;
         }
@@ -114,6 +112,7 @@ function playerClickRed() {
     timing();
     if('click') {
         playersPattern.push(1);
+        
     }
 }
 
@@ -122,6 +121,7 @@ function playerClickBlue() {
     timing();
     if('click') {
         playersPattern.push(2);
+        
     }
 }
 
@@ -130,6 +130,7 @@ function playerClickGrn() {
     timing();
     if('click') {
         playersPattern.push(3);
+        
     }
 }
 
@@ -138,6 +139,7 @@ function playerClickYlw() {
     timing();
     if('click') {
         playersPattern.push(4);
+        
     }
 }
 
