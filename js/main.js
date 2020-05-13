@@ -38,7 +38,6 @@ function gameStart() {
     for(let i = 0; i < 10; i ++) {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
-    console.log(simonsPattern);
     roundNum = 1;
     playersPattern = [];
     compTurn();
@@ -47,7 +46,6 @@ function gameStart() {
 function compTurn() {
     let loop = 1;
     const playCompPattern = setInterval(function() {
-        console.log(loop);
         if(simonsPattern[loop - 1] === 1) compPickOne();
         if(simonsPattern[loop - 1] === 2) compPickTwo();
         if(simonsPattern[loop - 1] === 3) compPickThree();
