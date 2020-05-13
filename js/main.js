@@ -5,8 +5,6 @@ const triangles = [
     {color: 'gold', light: 'yellow'}
 ];
 
-
-
 const triangleEl = {
     top: document.querySelector('#arrow-down'),
     left: document.querySelector('#arrow-left'),
@@ -14,8 +12,6 @@ const triangleEl = {
     bottom: document.querySelector('#arrow-up')
 };
 
-let gameOver;
-let winner;
 let roundNum;
 let simonsPattern = [];
 let playersPattern = [];
@@ -29,14 +25,12 @@ init();
 function init() {
     simonsPattern = [];
     playersPattern = [];
-    winner = null;
-    gameOver = null;
+    document.getElementById('win').style.color = 'transparent';
+    document.getElementById('lose').style.color = 'transparent';
     roundNum = 0;
-    //check()
 }
 
 function gameStart() {
-    //console.log('start button is working');
     for(let i = 0; i < 10; i ++) {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
@@ -47,7 +41,6 @@ function gameStart() {
 }
 
 function compTurn() {
-    //How to disable event listeners for player
     let loop = 1;
     const playCompPattern = setInterval(function() {
         console.log(loop);
@@ -64,40 +57,25 @@ function compTurn() {
 }
 
 function check () {
-    //compare playersPattern and simonsPattern
-    //every click compare to simonsPattern
-    console.log('check function start');
-    console.log(playersPattern);
     let playerVar = playersPattern.join('')
     let simonVar = simonsPattern.slice(0, roundNum).join('')
     if(playerVar === simonVar && roundNum < 10) {
         roundNum++
         compTurn();
     }
-    //for(let i = 0; i < playersPattern.length; i++) {
-     //if(playersPattern[i] === simonsPattern[i]) {
-            
-    //         roundNum++;
-    //         compTurn();
-    //     }
-    if(playerVar === simonVar && roundNum === 10) {
-         return console.log('You Win');
+    if(playerVar === simonVar && roundNum === playersPattern.length) {
+        return  document.getElementById('win').style.color = 'red'
     } 
     if(playerVar !== simonVar) {
-        return console.log('Game Over');
+        return document.getElementById('lose').style.color = 'red'
     }
-    // }
 }
 
 function checkRound() {
-    console.log(playersPattern, roundNum);
     if(playersPattern.length === roundNum) {
         check();
-        console.log('check');
         return;
     }
-    console.log('not yet');
-    return;
 }
 
 function playersTurn() {
@@ -106,7 +84,6 @@ function playersTurn() {
     document.getElementById('arrow-left').addEventListener('click', playerClickBlue);
     document.getElementById('arrow-right').addEventListener('click', playerClickGrn);
     document.getElementById('arrow-up').addEventListener('click', playerClickYlw);
-    //check();
 }
 
 function timing() {
