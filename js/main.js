@@ -2,7 +2,7 @@ const triangles = [
     {color: 'darkred', light: 'red'},
     {color: 'blue', light: 'cyan'}, 
     {color: 'green', light: 'lime'},
-    {color: 'gold', light: 'yellow'}
+    {color: 'goldenrod', light: 'yellow'}
 ];
 
 const triangleEl = {
@@ -11,6 +11,8 @@ const triangleEl = {
     right: document.querySelector('#arrow-right'),
     bottom: document.querySelector('#arrow-up')
 };
+
+const button = document.getElementById('start-btn');
 
 let roundNum;
 let simonsPattern = [];
@@ -28,9 +30,11 @@ function init() {
     document.getElementById('win').style.color = 'transparent';
     document.getElementById('lose').style.color = 'transparent';
     roundNum = 0;
+    button.disabled = false;
 }
 
 function gameStart() {
+    button.disabled = true;
     for(let i = 0; i < 10; i ++) {
     simonsPattern.push(Math.floor(Math.random() * 4) + 1);
     };
