@@ -66,10 +66,12 @@ function check () {
         compTurn();
     }
     if(playerVar === simonVar && roundNum === playersPattern.length) {
-        return  document.getElementById('win').style.color = 'red'
+        return  document.getElementById('win').style.color = 'red';
+
     } 
     if(playerVar !== simonVar) {
-        return document.getElementById('lose').style.color = 'red'
+        return document.getElementById('lose').style.color = 'red';
+
     }
 }
 

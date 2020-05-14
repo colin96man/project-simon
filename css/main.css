@@ -15,14 +15,17 @@ button {
     margin-top: 5px;
     background-color: slategray;
     color: snow;
+    border: .5px solid black;
 }
 
 h1 {
     font-size: 50px;
+    -webkit-text-stroke: .25px black;
 }
 
 h2 {
     font-size: 25px;
+    -webkit-text-stroke: .25px black;
 }
 
 h3 {
@@ -31,6 +34,8 @@ h3 {
 
 #win, #lose {
     color: transparent;
+    -webkit-text-stroke: .25px transparent;
+
 }
 
 #board {
