@@ -60,7 +60,7 @@ function compTurn() {
     }, 800) 
 }
 
-function check () {
+function check() {
     let playerVar = playersPattern.join('')
     let simonVar = simonsPattern.slice(0, roundNum).join('')
     if(playerVar === simonVar && roundNum < 10) {
