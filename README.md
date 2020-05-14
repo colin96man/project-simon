@@ -12,9 +12,9 @@ This game is a viking themed version of the Simon toy that was originally releas
 ### Game Link:
 You can play my version of the game [here](https://colin96man.github.io/project-simon/)
 ### Next Steps:
-*Add more viking styling to make it feel more "viking-like"
-*Add sounds to the buttons
-*Create tow new modes, an original which is 20 rounds and a hard mode which could be 30 rounds or more
+* Add more viking styling to make it feel more "viking-like"
+* Add sounds to the buttons
+* Create tow new modes, an original which is 20 rounds and a hard mode which could be 30 rounds or more
 
 
 

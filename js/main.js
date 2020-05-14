@@ -29,6 +29,8 @@ function init() {
     playersPattern = [];
     document.getElementById('win').style.color = 'transparent';
     document.getElementById('lose').style.color = 'transparent';
+    document.getElementById('win').style.webkitTextStroke = 'transparent';
+    document.getElementById('lose').style.webkitTextStroke = 'transparent';
     roundNum = 0;
     button.disabled = false;
 }
@@ -66,11 +68,13 @@ function check () {
         compTurn();
     }
     if(playerVar === simonVar && roundNum === playersPattern.length) {
-        return  document.getElementById('win').style.color = 'red';
+        document.getElementById('win').style.color = 'red';
+        document.getElementById('win').style.webkitTextStroke = '.25px black';
 
     } 
     if(playerVar !== simonVar) {
-        return document.getElementById('lose').style.color = 'red';
+        document.getElementById('lose').style.color = 'red';
+        document.getElementById('lose').style.webkitTextStroke = '.25px black';
     }
 }
 
