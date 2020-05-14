@@ -37,7 +37,6 @@ h3 {
 #win, #lose {
     color: transparent;
     -webkit-text-stroke: .25px transparent;
-
 }
 
 #board {

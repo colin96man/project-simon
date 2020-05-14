@@ -71,7 +71,6 @@ function check () {
     } 
     if(playerVar !== simonVar) {
         return document.getElementById('lose').style.color = 'red';
-
     }
 }
 
